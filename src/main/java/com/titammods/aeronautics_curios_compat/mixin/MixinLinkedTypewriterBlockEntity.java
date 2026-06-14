@@ -88,9 +88,11 @@ public abstract class MixinLinkedTypewriterBlockEntity implements ILinkedTypewri
         this.acc$clientCheck = b;
     }
 
-    @ModifyArg(method = "checkAndStartUsing",
+    @ModifyArg(
+            method = "checkAndStartUsing",
             at = @At(value = "INVOKE",
-                    target = "Ldev/simulated_team/simulated/mixin_interface/PlayerTypewriterExtension;simulated$setCurrentTypewriter(Lnet/minecraft/core/BlockPos;)V"))
+                    target = "Ldev/simulated_team/simulated/mixin_interface/PlayerTypewriterExtension;simulated$setCurrentTypewriter(Lnet/minecraft/core/BlockPos;)V"),
+            require = 0)
     public BlockPos acc$setCurrentTypewriter(BlockPos pos, @Local(name = "player") PlayerTypewriterExtension player) {
         return pos != null ? pos : (player != null ? ((Player) player).blockPosition() : null);
     }
@@ -134,9 +136,11 @@ public abstract class MixinLinkedTypewriterBlockEntity implements ILinkedTypewri
         }
     }
 
-    @ModifyExpressionValue(method = "checkAndStartUsing",
+    @ModifyExpressionValue(
+            method = "checkAndStartUsing",
             at = @At(value = "INVOKE",
-                    target = "Lnet/minecraft/world/level/Level;getBlockEntity(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;"))
+                    target = "Lnet/minecraft/world/level/Level;getBlockEntity(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;"),
+            require = 0)
     public BlockEntity acc$getBlockEntity(BlockEntity original, @Local(name = "player") PlayerTypewriterExtension player) {
         if (original != null) return original;
         if (player != null) {

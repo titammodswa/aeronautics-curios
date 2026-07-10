@@ -119,8 +119,6 @@ public abstract class MixinLinkedTypewriterBlockEntity implements ILinkedTypewri
         return dummyLevel == null;
     }
 
-    // Substituto do @Definition/@Expression (requer MixinExtras 0.5.3 que não temos)
-    // Injeta no HEAD de checkAndStartUsing e intercepta o caso do DummyLevel
     @Inject(method = "checkAndStartUsing", at = @At("HEAD"), cancellable = true)
     public void acc$isCurrentUserNull(UUID uuid, CallbackInfoReturnable<Boolean> cir) {
         LinkedTypewriterBlockEntity lbe = (LinkedTypewriterBlockEntity)(Object) this;

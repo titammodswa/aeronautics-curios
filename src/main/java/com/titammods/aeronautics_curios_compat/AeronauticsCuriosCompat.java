@@ -46,7 +46,7 @@ public class AeronauticsCuriosCompat {
                 };
                 addPredicateMethod.invoke(null, pred);
             } catch (Exception e) {
-                System.out.println("[Aeronautics Curios Compat] Não foi possível injetar predicate de goggles: " + e.getMessage());
+                System.out.println("[Aeronautics Curios Compat] It was not possible to inject goggles predicate: " + e.getMessage());
             }
         });
     }

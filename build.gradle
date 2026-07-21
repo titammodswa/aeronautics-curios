@@ -37,24 +37,22 @@ neoForge {
 repositories {
     mavenLocal()
     maven {
-        name = "OctoStudios"
-        url = "https://maven.octo-studios.com/releases"
-    }
-    maven {
         url = "https://cursemaven.com"
         content {
             includeGroup "curse.maven"
         }
     }
+    maven { url = "https://maven.blamejared.com" } // JEI, Vazkii's Mods
+    maven {url = "https://maven.theillusivec4.top/"} // Curios
     maven { url = "https://maven.createmod.net" }
     maven { url = "https://maven.ithundxr.dev/snapshots" }
     maven { url = "https://maven.tterrag.com/" }
-
-
+    maven { url = "https://maven.ryanhcode.dev/releases" } //Aeronautics
 }
 
 dependencies {
-    implementation"curse.maven:curios-309927:6529130"
+    compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
+    runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 
     implementation("com.simibubi.create:create-${minecraft_version}:${create_version}:slim") { transitive = false }
     implementation("net.createmod.ponder:ponder-neoforge:${ponder_version}+mc${minecraft_version}")
@@ -62,11 +60,14 @@ dependencies {
     runtimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${minecraft_version}:${flywheel_version}")
     implementation("com.tterrag.registrate:Registrate:${registrate_version}")
 
+    implementation("dev.ryanhcode.sable:sable-neoforge-1.21.1:2.0.3") {transitive = false}
+    implementation("dev.eriksonn.aeronautics:aeronautics-neoforge-1.21.1:1.3.0")
+    implementation("dev.simulated_team.simulated:simulated-neoforge-1.21.1:1.3.0")
 
-    implementation("curse.maven:create-aeronautics-676721:8003941")
-    implementation("curse.maven:sable-1312371:8007005")
+    compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+    runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 
-    implementation files('libs/dev.simulated_team.simulated.simulated-neoforge-1.21.1-1.2.1.jar')
+//    implementation "curse.maven:gregtechceu-modern-890405:6766269"
 
 }
 

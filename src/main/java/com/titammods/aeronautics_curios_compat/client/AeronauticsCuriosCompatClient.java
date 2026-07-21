@@ -13,7 +13,7 @@ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 @EventBusSubscriber(modid = AeronauticsCuriosCompat.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public class AeronauticsCuriosCompatClient {
+public class eronauticsCuriosCompatClient {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {

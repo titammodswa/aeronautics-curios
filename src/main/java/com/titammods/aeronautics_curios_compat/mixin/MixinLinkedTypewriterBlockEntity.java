@@ -37,6 +37,7 @@ public abstract class MixinLinkedTypewriterBlockEntity implements ILinkedTypewri
     @Shadow private UUID currentUser;
     @Shadow private LinkedTypewriterEntries entryMap;
     @Shadow private String typedEntry;
+    @Shadow public boolean powered;
 
     @Mutable
     @Shadow @Final
@@ -148,7 +149,7 @@ public abstract class MixinLinkedTypewriterBlockEntity implements ILinkedTypewri
         return null;
     }
 
-    @Inject(method = "disconnectUser", at = @At("HEAD"))
+    @Inject(method = "disconnectUser", at = @At("HEAD"), cancellable = true)
     public void acc$disconnectUser(CallbackInfo ci) {
         LinkedTypewriterBlockEntity lbe = (LinkedTypewriterBlockEntity)(Object) this;
         DummyLevel dummyLevel = DummyLevel.getDummyLevelFor((BlockEntity)(Object) this);
@@ -160,6 +161,10 @@ public abstract class MixinLinkedTypewriterBlockEntity implements ILinkedTypewri
                     dummyLevel.removeBlockEntity(player.blockPosition(), player);
                 }
             }
+        }
+        if(this.currentUser == null ) {
+            this.powered = false;
+            ci.cancel();
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.titammods.aeronautics_curios_compat;
 
+import com.titammods.aeronautics_curios_compat.client.AeronauticsCuriosCompatClient;
 import com.titammods.aeronautics_curios_compat.network.ModNetworking;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -29,6 +30,7 @@ public class AeronauticsCuriosCompat {
     public AeronauticsCuriosCompat(IEventBus modEventBus) {
         modEventBus.addListener(this::onCommonSetup);
         modEventBus.addListener(this::onRegisterPayloads);
+        modEventBus.addListener(AeronauticsCuriosCompatClient::onClientSetup);
     }
 
     private void onCommonSetup(final FMLCommonSetupEvent event) {

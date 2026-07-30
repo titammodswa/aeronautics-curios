@@ -2,6 +2,7 @@ package com.titammods.aeronautics_curios_compat.registry;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.settings.KeyConflictContext;
 import org.lwjgl.glfw.GLFW;
 
@@ -11,7 +12,7 @@ public class ModKeyBindings {
 
     public static KeyMapping REMOTE_USE;
 
-    public static void register() {
+    public static void register(RegisterKeyMappingsEvent event) {
         REMOTE_USE = new KeyMapping(
                 "key.aeronautics_curios_compat.remote_use",
                 KeyConflictContext.IN_GAME,
@@ -19,5 +20,6 @@ public class ModKeyBindings {
                 GLFW.GLFW_KEY_Y,
                 CATEGORY
         );
+        event.register(ModKeyBindings.REMOTE_USE);
     }
 }

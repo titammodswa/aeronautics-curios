@@ -28,7 +28,6 @@ public class AeronauticsCuriosCompatClient {
 
     @SubscribeEvent
     public static void onRegisterKeyMappings(RegisterKeyMappingsEvent event) {
-        ModKeyBindings.register();
-        event.register(ModKeyBindings.REMOTE_USE);
+        ModKeyBindings.register(event);
     }
 }

@@ -55,11 +55,14 @@ public record RemoteUsePacket() implements CustomPacketPayload {
             DummyLevel dummyLevel = DummyLevel.getDummyLevelFor(player);
             if (dummyLevel != null) dummyLevel.setBlockEntity(player.blockPosition(), lbe, player);
 
+            // I am getting slighty mad with this method below, idk, but it works now.
             boolean check = lbe.checkAndStartUsing(player.getUUID());
             if (!check) {
                 lbe.disconnectUser();
             } else {
                 if (dummyLevel != null) dummyLevel.setBlockEntity(player.blockPosition(), lbe, player);
+
+                //TODO: fix this properly
 
                 dummyLevel.getLevel().playSound(null, player.blockPosition(), AllSoundEvents.CONTROLLER_PUT.getMainEvent(), SoundSource.BLOCKS, 1.0F, 0.95F + 0.1F * dummyLevel.getLevel().getRandom().nextFloat());
 

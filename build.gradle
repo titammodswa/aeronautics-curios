@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
     id 'net.neoforged.moddev' version '2.0.140'
 }
 
@@ -69,6 +70,19 @@ dependencies {
 
 //    implementation "curse.maven:gregtechceu-modern-890405:6766269"
 
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/repo"
+        }
+    }
 }
 
 tasks.withType(JavaCompile).configureEach {

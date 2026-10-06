@@ -1,5 +1,7 @@
 {
   "key.categories.aeronautics_curios_compat": "Aeronautics Curios Compat",
   "key.aeronautics_curios_compat.remote_use": "Use Remote Typewriter",
-  "curios.identifier.linked_typewriter": "Linked Typewriter"
+  "curios.identifier.linked_typewriter": "Linked Typewriter",
+  "fml.menu.mods.info.description.aeronautics_curios_compat": "Adds Curios slot and rendering support to the Create Aeronautics Aviator Goggles, and remote LinkedTypewriter usage via Curios slot.",
+  "tag.item.curios.linked_typewriter": "Linked Typewriters"
 }
